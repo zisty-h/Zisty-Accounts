@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--
+
+ _______                           ______ _       _
+|__   __|                         |___  /(_)     | |
+   | |     ___   __ _  _ __ ___      / /  _  ___ | |_  _   _
+   | |    / _ \ / _` || '_ ` _ \    / /  | |/ __|| __|| | | |
+   | |   |  __/| (_| || | | | | |  / /__ | |\__ \| |_ | |_| |
+   |_|    \___| \__,_||_| |_| |_| /_____||_||___/ \__| \__, |
+                                                        __/ |
+                                                       |___/
+
+ We are TeamZisty!
+ If you are watching this, why don't you join our team?
+ https://discord.gg/6BPfVm6cST
+
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log in｜Zisty</title>
+    <meta name="keywords" content=" Zisty,ジスティー">
+    <meta name="description"
+        content="Zisty is an open source decentralized social networking platform created by a team formed somewhat.。">
+    <meta name="copyright" content="Copyright &copy; 2023 Zisty. All rights reserved." />
+    <meta property="og:title" content="Zisty" />
+    <meta name="copyright" content="Copyright &copy; 2023 Zisty. All rights reserved." />
+    <meta property="og:title" content="Zisty" />
+    <meta property="og:image" content="https://zisty.net/images/screenshot.785.jpg">
+    <meta property="og:image:alt" content="バナー画像">
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Zisty" />
+    <meta name="twitter:description" content="Zisty is an open source decentralized social networking platform created by a team formed somewhat.">
+    <meta name="twitter:image:src" content />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="https://zisty.net/" />
+    <meta name="twitter:creator" content="https://zisty.net/" />
+    <meta name="twitter:title" content="Zisty" />
+    <meta name="twitter:description" content="https://zisty.net/" />
+    <meta name="twitter:image:src" content />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://zisty.net/icon.css">
+    <link rel="stylesheet" href="https://zisty.net/header.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div id="loading-screen"><noscript>
+            <p><span style="font-size: 50px;">⚠</span><br>JavaScriptを有効にしてください。<br>Please enable JavaScript.</p>
+            <style>
+                .load {
+                    width: 0;
+                }
+
+                .input-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .digit-input {
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            font-size: 2em;
+            border: 2px solid #ccc;
+            background-color: #181a1b;
+            border-radius: 10px;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+            outline: none;
+        }
+
+        .digit-input:focus {
+            border-color: #007BFF;
+        }
+
+        .digit-input::-webkit-outer-spin-button,
+        .digit-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .digit-input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .hey {
+            color: #c8c3bc;
+            text-decoration: underline solid #c8c3bc;
+        }
+            </style>
+        </noscript><img class="load" src="https://accounts.zisty.net/images/load.gif"></div>
+    <div class="header">
+        <div class="left-links"><a class="header-a" href="/"><i class="fa-solid fa-house"></i></a><a class="header-a"
+                href="https://zisty.net/blog/">Blog</a><a class="header-a" href="https://teams.zisty.net/ja/">Safety</a>
+        </div>
+        <div class="right-links"><a class="header-b" href=""></a><a class="header-b" href="https://github.com/zisty-h"><i
+                    class="fa-solid fa-boxes-stacked"></i></a><a class="header-bar">｜</a><a class="header-b" id="header"
+                onmouseover="showLanguageDropdown()" onmouseout="hideLanguageDropdown()"><i
+                    class="fa-solid fa-earth-americas"></i></a>
+            <div id="languageDropdown" onmouseover="keepLanguageDropdownVisible()" onmouseout="hideLanguageDropdown()"><a
+                    onclick="setLanguage('other')">English</a><a onclick="setLanguage('ja')">日本語</a></div>
+            <script>
+                function setLanguage(language) {
+                    document.cookie = "Language=" + language + "; path=/; max-age=" + (30 * 24 * 60 * 60);
+                    window.location.reload();
+                }
+            </script>
+        </div>
+    </div>
+    <div class="center">
+        <form id="authForm" method="post">
+            <img src="https://zisty.net/favicon.png" width="50px">
+            <h2>二段階認証（2FA）</h2>
+            <p>Zistyの認証コードを入力してください。<br>
+                ログインにお困りですか？お困りでしたら<a href="" class="hey">こちら</a>までお越しください。</p>
+
+            <?php if (isset($_GET['error'])): ?>
+                <p class="error-message"><?php echo htmlspecialchars($_GET['error']); ?></p>
+            <?php endif; ?>
+            <div class="input-container">
+                <input type="number" name="code1" class="digit-input" maxlength="1" required>
+                <input type="number" name="code2" class="digit-input" maxlength="1" required>
+                <input type="number" name="code3" class="digit-input" maxlength="1" required>
+                <input type="number" name="code4" class="digit-input" maxlength="1" required>
+                <input type="number" name="code5" class="digit-input" maxlength="1" required>
+                <input type="number" name="code6" class="digit-input" maxlength="1" required>
+            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const inputs = document.querySelectorAll(".digit-input");
+
+                    inputs.forEach((input, index) => {
+                        input.addEventListener("input", function() {
+                            if (this.value.length === this.maxLength) {
+                                if (index < inputs.length - 1) {
+                                    inputs[index + 1].focus();
+                                } else {
+                                    document.getElementById("authForm").submit();
+                                }
+                            }
+                        });
+                    });
+                });
+            </script>
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
+            <input type="submit" value="認証">
+            <p class="tp"><a href="https://zisty.net/terms/" target="_blank">Tos</a>｜<a href="https://zisty.net/privacy/" target="_blank">Privacy</a></p>
+        </form>
+    </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="../Warning.js"></script>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("UserName").value;
+            var password = document.getElementById("UserPassword").value;
+            
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    var response = JSON.parse(this.responseText);
+                    if (response.two_factor_required) {
+                        document.getElementById("loginForm").style.display = "none";
+                        document.getElementById("authForm").style.display = "block";
+                        return false;
+                    }
+                }
+            }
+            xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password) + "&csrf_token=<?php echo $_SESSION['csrf_token']; ?>");
+            
+            return false;
+        }
+    </script>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.animation = 'fadeOut 1s ease forwards';
+            }, 1000);
+        });
+    </script>
+    <script>
+        function showLanguageDropdown() {
+            document.getElementById("languageDropdown").style.display = "block";
+        }
+
+        function hideLanguageDropdown() {
+            document.getElementById("languageDropdown").style.display = "none";
+        }
+
+        function keepLanguageDropdownVisible() {
+            document.getElementById("languageDropdown").style.display = "block";
+        }
+    </script>
+    <script>
+        function onClick(e) {
+            e.preventDefault();
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LewliwpAAAAAItLoOTY1QQ_UJpntJZNmWUIiOPM', {
+                    action: 'submit'
+                }).then(function(token) {});
+            });
+        }
+    </script>
+</body>
+
+</html>
